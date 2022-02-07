@@ -1,4 +1,4 @@
-package com.TechPro.SpringBootStudy;
+package Controller;
 
 
 import org.springframework.stereotype.Component;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component  //bilesen tamamlayici : kullanilan classtan obj IOC create eder
-public class StudentBean01 {
+public class StudentBean01 implements StudentBean02Interface {
 //  njection yapacagimiz obje uretimi icin yani bu class
 //  zayif baglantida kullancagiz diger classlardan cagiracagiz bunlari
 
@@ -58,5 +58,10 @@ public class StudentBean01 {
                 ", age=" + age +
                 ", id='" + id + '\'' +
                 '}';
+    }
+
+    @Override
+    public String study() {
+        return "StudentBean01 class'indan implementation edildi... ";
     }
 }

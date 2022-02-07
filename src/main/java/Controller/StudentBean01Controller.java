@@ -1,8 +1,8 @@
-package com.TechPro.SpringBootStudy;
+package Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,7 +54,7 @@ public class StudentBean01Controller {
 
     //Loose coupling...
      @Autowired//StudentBean01 data type'de IOC conteiner'e defoult obj create eder.
-     StudentBean01 s;//StudentBean01 s =new StudentBean01();==>tight coupling new StudentBean01()-->@Compenent ,"="-->@Autowired
+            StudentBean01 s;//StudentBean01 s =new StudentBean01();==>tight coupling new StudentBean01()-->@Compenent ,"="-->@Autowired
      @GetMapping(path = "/getObjectLoose")
      public StudentBean01 getObjectLoose() {
         s.setAge(41);
@@ -83,6 +83,47 @@ public class StudentBean01Controller {
                 (new StudentBean01("hatice  hanım", 27, "***")));
 
     }
+
+
+    //Loose coupling ...
+
+     @Autowired  //Trick:AUtowired loose coupling deki hersey icin kullanilmali her variable icin
+     StudentBean01 t;
+     @GetMapping(path = "/getInterfacestudy01")
+     public String getInterfaceStudy(){
+
+         return t.study();
+     }
+
+    @Autowired
+    StudentBean02 k;
+    @GetMapping(path = "/getInterfacestudy02")
+    public String getInterfaceStudy02(){
+
+        return k.study();
+    }
+
+
+
+                //bu olmadan hata verir. @Autowired ile tanimlanan objenin create edilecek data type'ni tanimlar.
+               //Tanimlanacak data type annotation'a parametre olur
+    @Autowired
+    @Qualifier(value="studentBean02")
+                StudentBean02Interface h;
+//qualifier ile bu interfaceden oluşan deklarasyona IOC’deki studentBean01 veya studentBean02
+// adındaki bekleyen variable’lardan hangisini atayacağına karar veriyoruz
+    @GetMapping(path = "/getInterfacestudy002")
+    public String getInterfaceStudy03(){
+
+        return h.study();
+    }
+
+
+
+
+
+
+
 
 
 
