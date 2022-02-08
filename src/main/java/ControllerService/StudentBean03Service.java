@@ -30,21 +30,9 @@ public class StudentBean03Service {
    }
 
 
+    //tum student listi return eden method
+    public List<StudentBean03> getAllStudent(){
+        return listofStudent;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
