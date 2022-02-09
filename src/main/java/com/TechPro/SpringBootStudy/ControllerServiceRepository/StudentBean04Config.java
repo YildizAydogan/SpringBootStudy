@@ -1,4 +1,4 @@
-package ControllerServiceRepository;
+package com.TechPro.SpringBootStudy.ControllerServiceRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

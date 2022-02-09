@@ -1,4 +1,4 @@
-package ControllerServiceRepository;
+package com.TechPro.SpringBootStudy.ControllerServiceRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

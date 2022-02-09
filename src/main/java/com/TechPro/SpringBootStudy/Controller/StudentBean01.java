@@ -1,32 +1,31 @@
-package Controller;
+package com.TechPro.SpringBootStudy.Controller;
 
 
 import org.springframework.stereotype.Component;
 
-@Component
-public class StudentBean02 implements StudentBean02Interface {
 
+
+
+@Component  //bilesen tamamlayici : kullanilan classtan obj IOC create eder
+public class StudentBean01 implements StudentBean02Interface {
+//  njection yapacagimiz obje uretimi icin yani bu class
+//  zayif baglantida kullancagiz diger classlardan cagiracagiz bunlari
+
+
+    //pojo plan old java obj
     private String name;
     private int age;
     private String id;
 
-    public StudentBean02() {
+    public StudentBean01() {
         System.out.println("Parametresiz constructor run edildi ...");
     }
 
-
-
-
-
-    public StudentBean02(String name, int age, String id) {
+    public StudentBean01(String name, int age, String id) {
         this.name = name;
         this.age = age;
         this.id = id;
     }
-
-
-
-
 
     public String getName() {
         return name;
@@ -52,8 +51,6 @@ public class StudentBean02 implements StudentBean02Interface {
         this.id = id;
     }
 
-
-
     @Override
     public String toString() {
         return "StudentBean01{" +
@@ -63,9 +60,8 @@ public class StudentBean02 implements StudentBean02Interface {
                 '}';
     }
 
-
     @Override
     public String study() {
-        return "Bu yaziyi okuduysan StudentBean02 class'indan geliyorum...";
+        return "StudentBean01 class'indan implementation edildi... ";
     }
 }

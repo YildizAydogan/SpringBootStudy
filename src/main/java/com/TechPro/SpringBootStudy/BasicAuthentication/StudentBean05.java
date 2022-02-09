@@ -1,4 +1,4 @@
-package ControllerServiceRepository;
+package com.TechPro.SpringBootStudy.BasicAuthentication;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +9,7 @@ import java.time.Period;
 @Entity//Hibernate bu class'ı tablo olarak DB'de create eder. TabloName:className columb name :veriables
 // @Entity-->@Id olmadan calısmaz(PK)
 @Table(name = "students")//classname olan tabloname modifiye edildi
-public class StudentBean04 {
+public class StudentBean05 {
     @Id
     private Long id;
     private String name;
@@ -18,11 +18,11 @@ public class StudentBean04 {
     private Integer age;
     private String errMsg;
 
-    public StudentBean04() {
+    public StudentBean05() {
         this.errMsg = "Agam olsa dukkan senin senin ogrenci araziiii :-(";
     }
 
-    public StudentBean04(Long id, String name, String email, LocalDate dob) {
+    public StudentBean05(Long id, String name, String email, LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -85,7 +85,7 @@ public class StudentBean04 {
 
     @Override
     public String toString() {
-        return "StudentBean03{" +
+        return "StudentBean05{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

@@ -1,4 +1,4 @@
-package ControllerServiceRepository;
+package com.TechPro.SpringBootStudy.ControllerServiceRepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
