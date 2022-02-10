@@ -27,7 +27,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.
+        http.csrf().disable(). //spring boot sana güveniyorum delete put patch calistir sorumluluk bende.Bu methodlarin blockun(default) kaldir
                 authorizeRequests(). //Requestler icin yetki sorgula (get put patch delete post)
                 antMatchers("/","index","/css/*","/js/*").permitAll().  //antMatchers method parametresindeki url'lere izin ver
                 anyRequest().//her request icin

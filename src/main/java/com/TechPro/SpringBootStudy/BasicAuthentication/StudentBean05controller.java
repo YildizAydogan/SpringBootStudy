@@ -1,8 +1,8 @@
 package com.TechPro.SpringBootStudy.BasicAuthentication;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class StudentBean05controller {
@@ -17,4 +17,20 @@ public class StudentBean05controller {
 
         return stdSrvc.selectStudentById(id);
     }
+
+    @GetMapping(path = "/selectAllStudents")
+    public List<StudentBean05> selectallStudents(){
+       return stdSrvc.selectAllStudent();
+    }
+
+
+    @PutMapping(path = "/updateFullyStudentById/{id}")
+    public StudentBean05 updateFullyStudentById(@PathVariable Long id,@RequestBody StudentBean05 newStd){
+
+
+        return stdSrvc.updateFullyStudentById(id,newStd);
+    }
+
+
+
 }
