@@ -4,6 +4,7 @@ package com.TechPro.SpringBootStudy.BasicAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,6 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
  public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {//tanimli oldugu classta  form basic security yerine  (basic authentication ) configure(ayarlama) eder
 
 
@@ -50,10 +52,16 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
     @Bean
     protected UserDetailsService userDetailsService() {
     //    User.builder().username("Yildiz").password("1234").roles("Yaparsin aslansin sen").build();
-        UserDetails student =User.builder().username("celil").password(passEncode.passSifrele().encode("1234")).roles("sefilAGA").build();
+        UserDetails student =User.builder().username("celil").password(passEncode.passSifrele().encode("1234")).authorities(ApplicationUserRoles.STUDENT.izinOnayla()).build();
         UserDetails hanimaga =User.builder().username("ipek").password(passEncode.passSifrele().encode("1212")).roles("hanim AGA hukumet gadin").build();
-        UserDetails admin =User.builder().username("esra").password(passEncode.passSifrele().encode("1213")).roles("ADMIN").build();
-
+        UserDetails admin = User.
+                builder().
+                username("admin").password(passEncode.passSifrele().encode("nimda")).
+                //roles("ADMIN").
+                        authorities(ApplicationUserRoles.ADMIN.izinOnayla()).
+                build();//convension tanım
+        // UserDetails admin = User.builder().username("admin").password("nimda").roles("ADMIN").build();//convension tanım
+        // return student;//returm uyumsuzluk hatası
 
 
         return new InMemoryUserDetailsManager(student,admin,hanimaga);
